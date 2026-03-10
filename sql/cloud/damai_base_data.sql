@@ -1,21 +1,20 @@
-
 USE damai_base_data;
 
 DROP TABLE IF EXISTS `d_area`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `d_area` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '区域id',
-  `parent_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '父区域id',
-  `name` varchar(120) NOT NULL COMMENT '区域名字',
-  `type` int(11) NOT NULL DEFAULT '2' COMMENT '1:省 2:区 3:县',
-  `municipality` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1:是 0:否',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `edit_time` datetime DEFAULT NULL COMMENT '编辑时间',
-  `status` tinyint(1) DEFAULT '1' COMMENT '1:正常 0:删除',
-  PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`),
-  KEY `ctype` (`type`)
+                          `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '区域id',
+                          `parent_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '父区域id',
+                          `name` varchar(120) NOT NULL COMMENT '区域名字',
+                          `type` int(11) NOT NULL DEFAULT '2' COMMENT '1:省 2:区 3:县',
+                          `municipality` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1:是 0:否',
+                          `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                          `edit_time` datetime DEFAULT NULL COMMENT '编辑时间',
+                          `status` tinyint(1) DEFAULT '1' COMMENT '1:正常 0:删除',
+                          PRIMARY KEY (`id`),
+                          KEY `parent_id` (`parent_id`),
+                          KEY `ctype` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3409 DEFAULT CHARSET=utf8 COMMENT='地区表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,21 +36,21 @@ DROP TABLE IF EXISTS `d_channel_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `d_channel_data` (
-  `id` bigint(64) NOT NULL COMMENT 'id',
-  `name` varchar(50) DEFAULT NULL COMMENT '名称',
-  `code` varchar(50) NOT NULL COMMENT '编码',
-  `introduce` varchar(500) DEFAULT NULL COMMENT '介绍描述',
-  `sign_public_key` text NOT NULL COMMENT 'rsa签名公钥',
-  `sign_secret_key` text NOT NULL COMMENT 'rsa签名秘钥',
-  `aes_key` text COMMENT 'aes秘钥',
-  `data_public_key` text COMMENT 'rsa参数公钥',
-  `data_secret_key` text COMMENT 'rsa参数私钥',
-  `token_secret` text NOT NULL COMMENT 'token秘钥',
-  `status` int(1) DEFAULT '1' COMMENT '状态 1:启用 0:禁用',
-  `edit_time` datetime DEFAULT NULL COMMENT '编辑时间',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `code_IDX` (`code`) USING BTREE
+                                  `id` bigint(64) NOT NULL COMMENT 'id',
+                                  `name` varchar(50) DEFAULT NULL COMMENT '名称',
+                                  `code` varchar(50) NOT NULL COMMENT '编码',
+                                  `introduce` varchar(500) DEFAULT NULL COMMENT '介绍描述',
+                                  `sign_public_key` text NOT NULL COMMENT 'rsa签名公钥',
+                                  `sign_secret_key` text NOT NULL COMMENT 'rsa签名秘钥',
+                                  `aes_key` text COMMENT 'aes秘钥',
+                                  `data_public_key` text COMMENT 'rsa参数公钥',
+                                  `data_secret_key` text COMMENT 'rsa参数私钥',
+                                  `token_secret` text NOT NULL COMMENT 'token秘钥',
+                                  `status` int(1) DEFAULT '1' COMMENT '状态 1:启用 0:禁用',
+                                  `edit_time` datetime DEFAULT NULL COMMENT '编辑时间',
+                                  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                                  PRIMARY KEY (`id`),
+                                  UNIQUE KEY `code_IDX` (`code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='渠道基础数据信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 

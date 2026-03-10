@@ -1,0 +1,10 @@
+-XX:MaxMetaspaceSize=256M
+-Xmx256M
+-Dspring.data.redis.host=127.0.0.1
+-Dspring.data.redis.password=LZll6666
+-Dspring.cloud.nacos.discovery.server-addr=127.0.0.1:8848
+-Dspring.kafka.bootstrap-servers=127.0.0.1:9092
+-Delasticsearch.ip=127.0.0.1:9200
+-Delasticsearch.userName=elastic
+-Delasticsearch.password=LZll6666
+-Dprefix.distinction.name=my
