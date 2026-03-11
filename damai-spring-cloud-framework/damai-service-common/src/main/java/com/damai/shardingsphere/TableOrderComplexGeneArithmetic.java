@@ -52,7 +52,8 @@ public class TableOrderComplexGeneArithmetic implements ComplexKeysShardingAlgor
      *                  value->查询条件,where代表集合里只有一对数据.若是in条件就代表有多对数据.
      */
     @Override
-    public Collection<String> doSharding(Collection<String> allActualSplitTableNames, ComplexKeysShardingValue<Long> complexKeysShardingValue) {
+    public Collection<String> doSharding(Collection<String> allActualSplitTableNames
+            , ComplexKeysShardingValue<Long> complexKeysShardingValue) {
         //1.获取传入的逻辑表名以及查询条件
         List<String> actualTableName =new ArrayList<>(allActualSplitTableNames.size());//先规定数组大小
         String logicTableName = complexKeysShardingValue.getLogicTableName();
@@ -77,18 +78,10 @@ public class TableOrderComplexGeneArithmetic implements ComplexKeysShardingAlgor
                     );
         }else if (CollectionUtil.isNotEmpty(userIdValue))
         {
-            value=orderNumberValue.stream().findFirst()
+            value=userIdValue.stream().findFirst()
                     .orElseThrow(
                             ()->new DaMaiFrameException(BaseCode.USER_ID_NOT_EXIST)
                     );
-        }
-
-
-        //TODO 为什么LIST可以直接在Collection中返回
-        //5.若value不为空,则进行运算加字符串拼接
-        if(value!=null){
-            actualTableName.add(logicTableName+"_"+(value&(shardingCount-1)));
-            return actualTableName;
         }
         return allActualSplitTableNames;
     }
