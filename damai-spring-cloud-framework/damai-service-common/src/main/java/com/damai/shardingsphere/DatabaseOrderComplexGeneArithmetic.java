@@ -51,11 +51,12 @@ public class DatabaseOrderComplexGeneArithmetic implements ComplexKeysShardingAl
         this.tableShardingCount = Integer.parseInt(props.getProperty(TABLE_SHARDING_COUNT_KEY_NAME));
     }
     
-   
+
     @Override
-    public Collection<String> doSharding(Collection<String> allActualSplitDatabaseNames, 
+    public Collection<String> doSharding(Collection<String> allActualSplitDatabaseNames,
                                          ComplexKeysShardingValue<Long> complexKeysShardingValue) {
         //TODO 自己实现
+
         return null;
     }
 }

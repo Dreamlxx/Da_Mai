@@ -4,7 +4,7 @@ dataSources:
     driverClassName: com.mysql.cj.jdbc.Driver
     jdbcUrl: jdbc:mysql://127.0.0.1:3306/damai_order_0?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&allowMultiQueries=true&serverTimezone=Asia/Shanghai&autoReconnect=true
     username: root
-    password: root
+    password: LZll6666
     hikari:
       # 连接池配置优化
       minimum-idle: 15                    # 最小空闲连接数(订单服务负载较高)

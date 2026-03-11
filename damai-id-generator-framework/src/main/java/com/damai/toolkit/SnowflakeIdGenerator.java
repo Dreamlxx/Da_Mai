@@ -169,8 +169,20 @@ public class SnowflakeIdGenerator {
      * @return 订单编号
      */
     public synchronized long getOrderNumber(long userId) {
-        //TODO 自己实现
-        return 0L;
+        //1.获取当前时间戳
+        long timeNow = getBase();
+        //2.预留六位基因(Long)
+        Long geneShift=6L;
+        //3.创建掩码
+        Long i=(1L<<geneShift)-1;
+        //4.从用户id中取出后六位作为基因
+        long userGene = userId & i;
+        //5.返回拼接之后的订单编号
+        return( (lastTimestamp-timeNow)<<timestampLeftShift)//时间戳
+                |(datacenterId<<datacenterIdShift)//数据中心id
+                |(workerId<<workerIdShift)//机器id
+                |(sequence<<geneShift)//序列号左移六位,用于扩容
+                |userGene;//基因六位
     }
 
     protected long tilNextMillis(long lastTimestamp) {
